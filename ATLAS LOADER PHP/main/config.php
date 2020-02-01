@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$dbname = "loader";
-$username = "yume";
-$password = "g15021373";
+$host = "YOUR HOST, EX: LOCALHOST";
+$dbname = "YOUR DB NAME";
+$username = "YOUR DB USERNAME";
+$password = "YOUR DB PASSWORD";
 
 try{
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
