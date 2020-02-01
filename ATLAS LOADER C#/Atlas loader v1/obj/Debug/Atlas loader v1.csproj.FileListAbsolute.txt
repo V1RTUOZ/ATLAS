@@ -1,0 +1,11 @@
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas loader v1.csprojAssemblyReference.cache
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas_loader_v1.login.resources
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas_loader_v1.Properties.Resources.resources
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas loader v1.csproj.GenerateResource.cache
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas_loader_v1.logged.resources
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas_loader_v1.registration.resources
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\bin\Debug\Atlas.exe.config
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\bin\Debug\Atlas.exe
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\bin\Debug\Atlas.pdb
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas.exe
+C:\Users\Yume\source\repos\Atlas loader v1\Atlas loader v1\obj\Debug\Atlas.pdb
