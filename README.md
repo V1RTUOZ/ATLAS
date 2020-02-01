@@ -1,2 +1,2 @@
 # ATLAS
- Atlas loader, C# and PHP, Coded by Yume
+ Atlas loader, coded by Yume 
