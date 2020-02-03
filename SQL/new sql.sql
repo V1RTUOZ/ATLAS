@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `teste`
 --
 
-CREATE TABLE `teste` (
+CREATE TABLE `users` (
   `uid` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -42,9 +42,7 @@ CREATE TABLE `teste` (
 -- Dumping data for table `teste`
 --
 
-INSERT INTO `teste` (`uid`, `username`, `password`, `hwid`, `expiration`, `banned`, `user_type`) VALUES
-(1, 'TESTE', 'TESTE', '', '0000-00-00 00:00:00', 0, 0),
-(2, 'Yume', '$2y$12$yWsCy1I65USBlZg3OYVTUuWzOUgPJjyJAqu0Do3rqAocD/Clv.xsG', '123', '0000-00-00 00:00:00', 0, 0);
+
 
 --
 -- Indexes for dumped tables
@@ -53,7 +51,7 @@ INSERT INTO `teste` (`uid`, `username`, `password`, `hwid`, `expiration`, `banne
 --
 -- Indexes for table `teste`
 --
-ALTER TABLE `teste`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`uid`);
 
 --
@@ -63,7 +61,7 @@ ALTER TABLE `teste`
 --
 -- AUTO_INCREMENT for table `teste`
 --
-ALTER TABLE `teste`
+ALTER TABLE `users`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
