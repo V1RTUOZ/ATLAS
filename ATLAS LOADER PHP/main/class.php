@@ -102,7 +102,7 @@ class Main{
 		if(Main::EXIST($user)) 
 			return json_encode(array('user' => $user,'response' => '407'));
 		$pass2 = password_hash($pass, PASSWORD_BCRYPT,['cost' => '12',]);
-		q("INSERT INTO users(username,password,hwid) VALUES(?,?,?)",array($user,$pass2,$hwid),true);
+		q("INSERT INTO users(username,password,hwid,expiration) VALUES(?,?,?,?)",array($user,$pass2,$hwid,"0000/00/00 00:00:00"),true);
 		return json_encode(array('user' => $user,'response' => '4'));
 	}
 
