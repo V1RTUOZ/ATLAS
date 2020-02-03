@@ -10,52 +10,52 @@ function q($sql,$arg,$fetch = false){
 class Main{
 /////////////////////////////////////////////////////////////////////
 	function EXIST($user){
-		return q("SELECT username FROM Users WHERE username = ?",array($user),true);
+		return q("SELECT username FROM users WHERE username = ?",array($user),true);
 	}
 	function PASSWORD($user){
-		return q("SELECT password FROM Users WHERE username = ?",array($user),true)['password'];
+		return q("SELECT password FROM users WHERE username = ?",array($user),true)['password'];
 	}
 	function BANNED($user){
-		if(q("SELECT banned FROM Users WHERE username = ?",array($user),true)['banned'] != "0")
+		if(q("SELECT banned FROM users WHERE username = ?",array($user),true)['banned'] != "0")
 			return false;
 		return true;
 	}
 	function PREMIUM($user){
-		if(q("SELECT user_type FROM Users WHERE username = ?",array($user),true)['user_type'] == "1")
+		if(q("SELECT user_type FROM users WHERE username = ?",array($user),true)['user_type'] == "1")
 			return true;
-		if(q("SELECT user_type FROM Users WHERE username = ?",array($user),true)['user_type'] == "2")
+		if(q("SELECT user_type FROM users WHERE username = ?",array($user),true)['user_type'] == "2")
 			return true;
 		return false;
 	}
 	function HWID($user,$hwid){
-		if(q("SELECT hwid FROM Users WHERE username = ?",array($user),true)['hwid'] == ""){
-			q("UPDATE Users SET hwid = ? WHERE username = ?",array($hwid,$user),true);
+		if(q("SELECT hwid FROM users WHERE username = ?",array($user),true)['hwid'] == ""){
+			q("UPDATE users SET hwid = ? WHERE username = ?",array($hwid,$user),true);
 			return true;
 		}
-		if(q("SELECT hwid FROM Users WHERE username = ?",array($user),true)['hwid'] != $hwid)
+		if(q("SELECT hwid FROM users WHERE username = ?",array($user),true)['hwid'] != $hwid)
 			return false;
 		return true;
 	}
 	function DATE($user){
-		return q("SELECT expiration FROM Users WHERE username = ?",array($user),true)['expiration'];
+		return q("SELECT expiration FROM users WHERE username = ?",array($user),true)['expiration'];
 	}
 	function UID($user){
-		return q("SELECT uid FROM Users WHERE username = ?",array($user),true)['uid'];
+		return q("SELECT uid FROM users WHERE username = ?",array($user),true)['uid'];
 	}
 	function EXPIRATION($user){
-		if(strtotime(q("SELECT expiration FROM Users WHERE username = ?",array($user),true)['expiration']) < strtotime(date('Y/m/d H:i:s')))
+		if(strtotime(q("SELECT expiration FROM users WHERE username = ?",array($user),true)['expiration']) < strtotime(date('Y/m/d H:i:s')))
 			return false;
 		return true;
 	}
 	function ADM($user){
-		if(q("SELECT user_type FROM Users WHERE username = ?",array($user),true)['user_type'] == "2")
+		if(q("SELECT user_type FROM users WHERE username = ?",array($user),true)['user_type'] == "2")
 			return true;
 
 		return false;
 	}
 	function DAYS_LEFT($user){
 		$future = date('Y/m/d H:i:s');
-		$timefromdb = q("SELECT expiration FROM Users WHERE username = ?",array($user),true)['expiration'];
+		$timefromdb = q("SELECT expiration FROM users WHERE username = ?",array($user),true)['expiration'];
 		$timeleft = strtotime($timefromdb)-strtotime($future);
 		$daysleft = round((($timeleft/24)/60)/60); 
 		return $daysleft;
@@ -102,7 +102,7 @@ class Main{
 		if(Main::EXIST($user)) 
 			return json_encode(array('user' => $user,'response' => '407'));
 		$pass2 = password_hash($pass, PASSWORD_BCRYPT,['cost' => '12',]);
-		q("INSERT INTO Users(username,password,hwid) VALUES(?,?,?)",array($user,$pass2,$hwid),true);
+		q("INSERT INTO users(username,password,hwid) VALUES(?,?,?)",array($user,$pass2,$hwid),true);
 		return json_encode(array('user' => $user,'response' => '4'));
 	}
 
@@ -110,13 +110,13 @@ class Main{
 		if(!Main::EXIST($user)) 
 			return json_encode(array('user' => $user,'response' => '408'));
 		if($ban == "true")
-			q("UPDATE Users SET banned = '1' WHERE username = ?",array($user),true);
+			q("UPDATE users SET banned = '1' WHERE username = ?",array($user),true);
 		else
-			q("UPDATE Users SET banned = '0' WHERE username = ?",array($user),true);
+			q("UPDATE users SET banned = '0' WHERE username = ?",array($user),true);
 		if($hwid == "true")
-			q("UPDATE Users SET hwid = '' WHERE username = ?",array($user),true);
-		q("UPDATE Users SET expiration = ? WHERE username = ?",array($date,$user),true);
-		q("UPDATE Users SET user_type = ? WHERE username = ?",array($type,$user),true);
+			q("UPDATE users SET hwid = '' WHERE username = ?",array($user),true);
+		q("UPDATE users SET expiration = ? WHERE username = ?",array($date,$user),true);
+		q("UPDATE users SET user_type = ? WHERE username = ?",array($type,$user),true);
 
 		
 		return json_encode(array('user' => $user,'response' => '4'));
