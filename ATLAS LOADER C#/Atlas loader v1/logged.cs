@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ManualMapInjection.Injection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,11 +29,21 @@ namespace Atlas_loader_v1
                 if (target == null) return;
 
                 //////////////////// INJECTION HERE ////////////////////
-                
-
+                ///
+                using(WebClient wc = new WebClient())
+                {
+                    wc.Proxy = null;
+                    //wc.Headers.Add("User-Agent", "custom user agent here");//If have .htaccess
+                    var response = wc.DownloadData("");//Link of your DLL
+                    var injector = new ManualMapInjector(target) { AsyncInjection = true }; 
+                    var module = $"hmodule = 0x{injector.Inject(response).ToInt64():x8}";
+                    MessageBox.Show("Injected !");
+                    Environment.Exit(0);
+                }
+                ///
                 ///////////////////////////////////////////////////////
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

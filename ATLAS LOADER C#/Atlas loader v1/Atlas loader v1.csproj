@@ -59,6 +59,12 @@
     <Compile Include="logged.Designer.cs">
       <DependentUpon>logged.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManualMap\Helpers.cs" />
+    <Compile Include="ManualMap\ManualMapInjector.cs" />
+    <Compile Include="ManualMap\Types\ManagedPtr.cs" />
+    <Compile Include="ManualMap\Win32\Definitions.cs" />
+    <Compile Include="ManualMap\Win32\Imports.cs" />
+    <Compile Include="ManualMap\Win32\PDefinitions.cs" />
     <Compile Include="registration.cs">
       <SubType>Form</SubType>
     </Compile>
